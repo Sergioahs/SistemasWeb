@@ -31,17 +31,17 @@ public class App
         get("/", (reg, res) -> "holis desde spark" );
         get("/hola", (request, response) -> {
             System.out.println("request: "+ request.queryParams());
-            System.out.println("request: "+ request.queryParams("Premail"));
-            System.out.println("request: "+ request.queryParams("Prpassword"));
+            System.out.println("request: "+ request.queryParams("Prmemail"));
+            System.out.println("request: "+ request.queryParams("Prmpassword"));
             System.out.println("request: "+ request.contentType());
-            return "hola "+ request.queryParams("Premail")+"desde spark";
+            return "hola "+ request.queryParams("Prmemail")+" desde spark";
         } );
 
         post("/adios", (request, response) -> {
             System.out.println("request: "+ request.queryParams());
-            System.out.println("request: "+ request.queryParams("Premail"));
-            System.out.println("request: "+ request.queryParams("Prpassword"));
-            return "adios "+ request.queryParams("Premail")+"desde spark";
+            System.out.println("request: "+ request.queryParams("Prmemail"));
+            System.out.println("request: "+ request.queryParams("Prmpassword"));
+            return "adios "+ request.queryParams("Prmemail")+" desde spark";
         });
     }
 }
