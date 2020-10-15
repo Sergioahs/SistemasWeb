@@ -28,7 +28,20 @@ public class App
         before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
 
-        get("/", (reg, res) -> "Hola desde spark" );
-        get("/adios", (reg, res) -> "adios desde spark" );
+        get("/", (reg, res) -> "holis desde spark" );
+        get("/hola", (request, response) -> {
+            System.out.println("request: "+ request.queryParams());
+            System.out.println("request: "+ request.queryParams("Premail"));
+            System.out.println("request: "+ request.queryParams("Prpassword"));
+            System.out.println("request: "+ request.contentType());
+            return "hola "+ request.queryParams("Premail")+"desde spark";
+        } );
+
+        post("/adios", (request, response) -> {
+            System.out.println("request: "+ request.queryParams());
+            System.out.println("request: "+ request.queryParams("Premail"));
+            System.out.println("request: "+ request.queryParams("Prpassword"));
+            return "adios "+ request.queryParams("Premail")+"desde spark";
+        });
     }
 }
