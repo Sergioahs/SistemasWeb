@@ -1,6 +1,12 @@
 package mx.uv.sw80640;
 
 import static spark.Spark.*;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+//import jdk.nashorn.internal.parser.JSONParser;
 /**
  * Hello world!
  *
@@ -41,7 +47,22 @@ public class App
             System.out.println("request: "+ request.queryParams());
             System.out.println("request: "+ request.queryParams("Prmemail"));
             System.out.println("request: "+ request.queryParams("Prmpassword"));
+            System.out.println("request: "+ request.queryParams("Prmpassword"));
+            System.out.println("request: "+ request.body());
+            System.out.println("request: "+ request.contentType());
             return "adios "+ request.queryParams("Prmemail")+" desde spark";
+        });
+
+        post("/adiosjson", (request, response) -> {
+            JsonParser parser = new JsonParser();
+            JsonElement arbol =parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+            
+            System.out.println("request: "+ peticion.get("Prmemail"));
+            System.out.println("request: "+ peticion.get("Prmpassword"));
+            System.out.println("request: "+ request.body());
+            System.out.println("request: "+ request.contentType());
+            return "adios "+ peticion.get("Prmemail")+" desde spark";
         });
     }
 }
