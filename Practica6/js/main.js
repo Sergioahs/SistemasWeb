@@ -27,7 +27,7 @@ bLogeo.addEventListener('click', function(){
            console.log(error)
         })*/
 
-        axios.post('http://localhost/adios?',{
+        /*axios.post('http://localhost/adios?',{
             Prmemail : e,
             Prmpassword: p
         })
@@ -39,7 +39,23 @@ bLogeo.addEventListener('click', function(){
         })
         .catch(function(error){
            console.log(error)
-        })
+        })*/
+
+    axios.post('http://localhost:4567/usuarios', {
+    PrtEmail : document.getElementById('email').value,
+    PrtPassword : document.getElementById('password').value
+})
+    .then(function (response) {
+        console.log(response)
+        console.log(response.data)
+        console.log(response.statusText)
+        document.getElementById('titulo').innerHTML = response.data
+    })
+    .catch(function (error) {
+        console.log(error)
+    })
+
+
 
 })
 
